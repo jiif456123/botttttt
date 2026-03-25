@@ -4,9 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prueba chatbot Salesforce</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
   <h1>Prueba de chatbot Salesforce</h1>
+  <p>Haz clic para cargar el chatbot:</p>
+
   <button onclick="cargarChat()">Abrir / cargar chat</button>
 
   <script>
@@ -25,31 +40,36 @@
           }
         );
 
-        console.log('Embedded Messaging inicializado');
+        console.log('✅ Embedded Messaging inicializado');
       } catch (err) {
-        console.error('Error loading Embedded Messaging:', err);
+        console.error('❌ Error loading Embedded Messaging:', err);
       }
     }
 
     function cargarChat() {
       if (chatInicializado) {
-        console.log('El chat ya fue cargado');
+        console.log('⚠️ El chat ya fue cargado');
         return;
       }
 
       const script = document.createElement('script');
       script.src = 'https://pluz--uat.sandbox.my.site.com/ESWPZPLUZWEBB2BUAT1760887776730/assets/js/bootstrap.min.js';
+
       script.onload = function () {
-        console.log('bootstrap.min.js cargado');
+        console.log('✅ bootstrap.min.js cargado');
         initEmbeddedMessaging();
       };
+
       script.onerror = function (e) {
-        console.error('No se pudo cargar el script del chatbot', e);
+        console.error('❌ No se pudo cargar el script del chatbot', e);
       };
 
       document.body.appendChild(script);
       chatInicializado = true;
     }
+
+    // OPCIONAL: cargar automáticamente sin botón
+    // window.addEventListener("load", cargarChat);
   </script>
 </body>
 </html>
