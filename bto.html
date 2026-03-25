@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba chatbot Salesforce</title>
+</head>
+<body>
+  <h1>Prueba de chatbot Salesforce</h1>
+  <button onclick="cargarChat()">Abrir / cargar chat</button>
+
+  <script>
+    let chatInicializado = false;
+
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'es_MX';
+
+        embeddedservice_bootstrap.init(
+          '00DHZ000006bOsk',
+          'PZ_PLUZWEBB2B_UAT',
+          'https://pluz--uat.sandbox.my.site.com/ESWPZPLUZWEBB2BUAT1760887776730',
+          {
+            scrt2URL: 'https://pluz--uat.sandbox.my.salesforce-scrt.com'
+          }
+        );
+
+        console.log('Embedded Messaging inicializado');
+      } catch (err) {
+        console.error('Error loading Embedded Messaging:', err);
+      }
+    }
+
+    function cargarChat() {
+      if (chatInicializado) {
+        console.log('El chat ya fue cargado');
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://pluz--uat.sandbox.my.site.com/ESWPZPLUZWEBB2BUAT1760887776730/assets/js/bootstrap.min.js';
+      script.onload = function () {
+        console.log('bootstrap.min.js cargado');
+        initEmbeddedMessaging();
+      };
+      script.onerror = function (e) {
+        console.error('No se pudo cargar el script del chatbot', e);
+      };
+
+      document.body.appendChild(script);
+      chatInicializado = true;
+    }
+  </script>
+</body>
+</html>
