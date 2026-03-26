@@ -1,76 +1,81 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Web con Soporte</title>
-    <style>
-        /* Estilos básicos para que tu web se vea bien */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
+<style>
+    /* Contenedor del chat: Bordes redondeados y sombra moderna */
+    .embeddedServiceSidebar.sidebarMaximized {
+        border-radius: 16px 16px 0 0 !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+        width: 360px !important; /* Más ancho para que no se amontone */
+        height: 550px !important;
+        overflow: hidden !important;
+    }
+
+    /* Cabecera del chat (Color MedSalud) */
+    .embeddedServiceSidebarHeader {
+        background-color: #00A1E0 !important; 
+        color: white !important;
+    }
+
+    /* BOTONES: Quitamos el gris y lo cuadrado */
+    .embeddedServiceSidebar .uiButton, 
+    .embeddedServiceSidebar .salesforceChatButton,
+    .embeddedServiceSidebar .fileSelectionButton {
+        background-color: #00A1E0 !important;
+        border-radius: 25px !important; /* Botón tipo cápsula */
+        border: none !important;
+        text-transform: none !important;
+        font-weight: bold !important;
+        transition: transform 0.2s ease !important;
+    }
+
+    .embeddedServiceSidebar .uiButton:hover {
+        transform: scale(1.02);
+        background-color: #0088BD !important;
+    }
+
+    /* Burbujas de texto del chat */
+    .embeddedServiceLiveAgentStateChatItem .chatContent {
+        border-radius: 15px !important;
+        padding: 12px !important;
+        font-family: 'Segoe UI', Roboto, sans-serif !important;
+    }
+
+    /* Área de adjuntar archivos (Para que no se encime) */
+    .embeddedServiceLiveAgentStateChatInputFooter .embeddedServiceLiveAgentStateChatFileTransfer {
+        background: #f8f9fa !important;
+        border-top: 2px solid #eee !important;
+        padding: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+
+    /* Botón flotante de inicio (el que aparece antes de abrir el chat) */
+    .embeddedServiceHelpButton .helpButton .uiButton {
+        background-color: #00A1E0 !important;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+    }
+</style>
+
+<script type='text/javascript'>
+    function initEmbeddedMessaging() {
+        try {
+            // Configuración de idioma
+            embeddedservice_bootstrap.settings.language = 'es_MX'; 
+
+            embeddedservice_bootstrap.init(
+                '00DHZ000006bOsk',
+                'pz_PLUZWEBB2CUAT',
+                'https://pluz--uat.sandbox.my.site.com/ESWpzPLUZWEBB2CUAT1760993403095',
+                {
+                    scrt2URL: 'https://pluz--uat.sandbox.my.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
         }
-
-        header {
-            background-color: #00A1E0; /* Color corporativo azul */
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        main {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        h2 { color: #00A1E0; }
-
-        /* Ajuste para que el chat de Salesforce no tape contenido crítico */
-        .embeddedServiceHelpButton .helpButton .uiButton {
-            background-color: #00A1E0 !important;
-            font-family: "Salesforce Sans", sans-serif;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Bienvenido a MedSalud</h1>
-    </header>
-
-    <main>
-        <h2>¿Necesitas ayuda?</h2>
-        <p>Nuestro asistente virtual está disponible para ayudarte con tus consultas médicas o técnicas.</p>
-        <p>Haz clic en el botón de la esquina inferior derecha para iniciar una conversación.</p>
-    </main>
-
-    <script type='text/javascript'>
-        function initEmbeddedMessaging() {
-            try {
-                embeddedservice_bootstrap.settings.language = 'es_MX'; 
-
-                embeddedservice_bootstrap.init(
-                    '00DHZ000006bOsk',
-                    'pz_PLUZWEBB2CUAT',
-                    'https://pluz--uat.sandbox.my.site.com/ESWpzPLUZWEBB2CUAT1760993403095',
-                    {
-                        scrt2URL: 'https://pluz--uat.sandbox.my.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-            }
-        };
-    </script>
-    <script type='text/javascript' src='https://pluz--uat.sandbox.my.site.com/ESWpzPLUZWEBB2CUAT1760993403095/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-    </body>
-</html>
+    };
+</script>
+<script type='text/javascript' 
+        src='https://pluz--uat.sandbox.my.site.com/ESWpzPLUZWEBB2CUAT1760993403095/assets/js/bootstrap.min.js' 
+        onload='initEmbeddedMessaging()'>
+</script>
