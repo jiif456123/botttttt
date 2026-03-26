@@ -3,12 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba de Chat Salesforce</title>
+    <title>Mi Web con Soporte</title>
+    <style>
+        /* Estilos básicos para que tu web se vea bien */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            background-color: #00A1E0; /* Color corporativo azul */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        h2 { color: #00A1E0; }
+
+        /* Ajuste para que el chat de Salesforce no tape contenido crítico */
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #00A1E0 !important;
+            font-family: "Salesforce Sans", sans-serif;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Congratulations</h1>
-    <p>Esta es una página de prueba para el Embedded Messaging de Salesforce.</p>
+    <header>
+        <h1>Bienvenido a MedSalud</h1>
+    </header>
+
+    <main>
+        <h2>¿Necesitas ayuda?</h2>
+        <p>Nuestro asistente virtual está disponible para ayudarte con tus consultas médicas o técnicas.</p>
+        <p>Haz clic en el botón de la esquina inferior derecha para iniciar una conversación.</p>
+    </main>
 
     <script type='text/javascript'>
         function initEmbeddedMessaging() {
@@ -28,12 +71,6 @@
             }
         };
     </script>
-
-    <script 
-        type='text/javascript' 
-        src='https://pluz--uat.sandbox.my.site.com/ESWpzPLUZWEBB2CUAT1760993403095/assets/js/bootstrap.min.js' 
-        onload='initEmbeddedMessaging()'>
-    </script>
-
-</body>
+    <script type='text/javascript' src='https://pluz--uat.sandbox.my.site.com/ESWpzPLUZWEBB2CUAT1760993403095/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+    </body>
 </html>
